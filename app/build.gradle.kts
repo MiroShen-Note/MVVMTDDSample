@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "miro.shen.research.mvvmtddsample"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "miro.shen.research.mvvmtddsample"
         minSdk = 29
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
