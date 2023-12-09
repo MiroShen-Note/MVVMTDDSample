@@ -40,6 +40,10 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+
+    tasks.withType<Test>{
+        useJUnitPlatform()
+    }
 }
 
 dependencies {
@@ -52,12 +56,13 @@ dependencies {
     val lifecycleVersion = "2.6.2"
     val archVersion = "2.2.0"
 
-    implementation("androidx.lifecycle:lifecycle-view-model-ktx:$lifecycleVersion")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
 
-    testImplementation("junit:junit:4.13.2")
+//    testImplementation("junit:junit:4.13.2")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.10.1")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
 
     implementation("androidx.test.espresso:espresso-idling-resource:3.5.1")
