@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.CsvSource
 class RegisterViewModelTest {
 
     @ParameterizedTest
-    @CsvSource("1111, A11111111, 帳號至少要6碼，第1碼為英文","A11111111, 111, 密碼至少要8碼，第1碼為英文，並包含1碼數字")
+    @CsvSource("1111, A11111111, 帳號至少要6碼，第1碼為英文", "A11111111, 111, 密碼至少要8碼，第1碼為英文，並包含1碼數字")
     fun registerFormatTest(
         loginId: String,
         password: String,

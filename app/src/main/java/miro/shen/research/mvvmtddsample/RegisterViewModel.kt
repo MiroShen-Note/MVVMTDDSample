@@ -2,7 +2,7 @@ package miro.shen.research.mvvmtddsample
 
 import androidx.lifecycle.MutableLiveData
 
-class RegisterViewModel {
+class RegisterViewModel : BaseViewModel() {
     val alertText: MutableLiveData<Event<String>> = MutableLiveData()
 
     fun register(loginId: String, passWord: String) {
@@ -12,7 +12,7 @@ class RegisterViewModel {
         } else if (!passwordVerify(passWord)) {
             alertText.value = Event("密碼至少要8碼，第1碼為英文，並包含1碼數字")
         }
-        
+
     }
 
     private fun passwordVerify(passWord: String): Boolean {
