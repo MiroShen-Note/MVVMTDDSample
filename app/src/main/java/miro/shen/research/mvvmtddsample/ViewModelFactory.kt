@@ -7,7 +7,8 @@ import miro.shen.research.mvvmtddsample.api.NetworkService
 class ViewModelFactory() : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(RegisterViewModel::class.java)) {
-            val repository: IRegisterRepository = RegisterRepository()
+            val networkService = NetworkService()
+            val repository: IRegisterRepository = RegisterRepository(networkService.memberAPI)
             return RegisterViewModel(repository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
