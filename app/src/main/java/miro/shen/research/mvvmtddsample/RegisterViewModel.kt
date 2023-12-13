@@ -3,6 +3,7 @@ package miro.shen.research.mvvmtddsample
 import androidx.lifecycle.MutableLiveData
 
 class RegisterViewModel(val repository: IRegisterRepository) : BaseViewModel() {
+    val registerFail: MutableLiveData<Event<Unit>> = MutableLiveData()
     val registerSucces: MutableLiveData<Event<String>> = MutableLiveData()
     val alertText: MutableLiveData<Event<String>> = MutableLiveData()
 
@@ -17,6 +18,8 @@ class RegisterViewModel(val repository: IRegisterRepository) : BaseViewModel() {
                 override fun onRegisterResult(registerResponse: RegisterResponse) {
                     if (registerResponse.registerResult) {
                         registerSucces.value = Event(registerResponse.userId!!)
+                    } else {
+                        registerFail.value = Event(Unit)
                     }
                 }
 

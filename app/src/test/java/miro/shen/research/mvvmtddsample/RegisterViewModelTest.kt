@@ -63,4 +63,25 @@ class RegisterViewModelTest {
         Assertions.assertEquals(userId, viewModel.registerSucces.value?.getContentIfNotHandled())
 
     }
+
+    @Test
+    fun registerFail() {
+        val loginId = "A11111111"
+        val password = "A2222222"
+
+        val slot = slot<IRegisterRepository.RegisterCallback>()
+
+        every { repository.register(eq(loginId), eq(password), capture(slot)) }
+            .answers {
+                slot.captured.onRegisterResult(
+                    RegisterResponse(false, null)
+                )
+            }
+
+        val viewModel = RegisterViewModel(repository)
+        viewModel.register(loginId, password)
+
+        Assertions.assertEquals(Unit, viewModel.registerFail.value?.getContentIfNotHandled())
+
+    }
 }
