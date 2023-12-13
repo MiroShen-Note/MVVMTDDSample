@@ -24,7 +24,7 @@ class RegisterUITest {
     var activityScenarioRule = ActivityScenarioRule(RegisterActivity::class.java)
 
     @Test
-    fun wrongLoginIdFormat_should_alert(){
+    fun wrongLoginIdFormat_should_alert() {
 
         //輸入錯誤格式的帳號
         onView(withId(R.id.loginId))
@@ -41,6 +41,22 @@ class RegisterUITest {
         //註冊失敗，Alert
         onView(withText("錯誤"))
             .inRoot(isDialog())
+            .check(matches(isDisplayed()))
+
+    }
+
+    @Test
+    fun register_success_should_starActivity() {
+        onView(withId(R.id.loginId))
+            .perform(typeText("a123456789"), closeSoftKeyboard())
+
+        onView(withId(R.id.password))
+            .perform(typeText("a111111111"), closeSoftKeyboard())
+
+        onView(withId(R.id.send))
+            .perform(click())
+
+        onView(withText("註冊成功"))
             .check(matches(isDisplayed()))
 
     }
